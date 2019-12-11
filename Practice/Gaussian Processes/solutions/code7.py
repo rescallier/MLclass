@@ -4,7 +4,8 @@
 for k in range(n_iter):
     x_start = np.atleast_2d(np.random.rand(15)*25).T
     f_min_k = np.min(y_data)
-    gpr.fit(x_data,y_data)
+    gpr.set_training_values(x_data, y_data)
+    gpr.train()
     obj_k = lambda x: -EI(gpr,np.atleast_2d(x),f_min_k)
     ## UNCOMMENT ONE OF THE INFILL CRITERIA
     # obj_k = lambda x: -EI(gpr,np.atleast_2d(x),f_min_k)
